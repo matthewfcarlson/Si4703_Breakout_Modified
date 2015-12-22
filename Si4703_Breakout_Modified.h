@@ -62,6 +62,8 @@ class Si4703_Breakout
 	int seekUp(); 					// returns the tuned channel or 0
 	int seekDown(); 				
 	void setVolume(int volume); 	// 0 to 15
+	void setMono(bool mono);
+	void setMute(bool mute);
 //	void readRDS(char* message, long timeout);
 	int readRDS(char* ps, char* rt);
 									// message should be at least 9 chars
@@ -107,6 +109,7 @@ class Si4703_Breakout
 	//Register 0x02 - POWERCFG
 	static const uint16_t  SMUTE = 15;
 	static const uint16_t  DMUTE = 14;
+	static const uint16_t  SETMONO = 13;
 	static const uint16_t  SKMODE = 10;
 	static const uint16_t  SEEKUP = 9;
 	static const uint16_t  SEEK = 8;

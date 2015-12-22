@@ -96,6 +96,22 @@ void Si4703_Breakout::setVolume(int volume)
   updateRegisters(); //Update
 }
 
+void Si4703_Breakout::setMono(bool mono){
+  readRegisters(); //Read the current register set
+  si4703_registers[POWERCFG] &= 0xFFFF & ~(1<<SETMONO);
+  if (mono == true)
+    si4703_registers[POWERCFG] |=  (1<<SETMONO);
+  updateRegisters(); //Update
+}
+
+void Si4703_Breakout::setMute(bool mute){
+  readRegisters(); //Read the current register set
+  si4703_registers[POWERCFG] &= 0xFFFF & ~(1<<DMUTE);
+  if (mute == true)
+    si4703_registers[POWERCFG] |=  (1<<DMUTE);
+  updateRegisters(); //Update
+}
+
 static inline void considerrdschar(char *buf, int place, char ch)
 {
 	if (ch < 0x20 || ch > 0x7F)
